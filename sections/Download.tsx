@@ -19,13 +19,13 @@ type Platform = {
 // Windows points at the "latest" GitHub release asset — uploading a new
 // release on GitHub auto-updates this URL with zero code changes.
 const WIN_INSTALLER =
-  'https://github.com/andiumclient/andiumclient.github.io/releases/latest/download/AndiumClient-Setup.exe';
+  'https://github.com/andiumclient/andiumclient.github.io/releases/latest/download/Andium.Client.Setup.1.1.30.exe';
 
 const PLATFORMS: Platform[] = [
   {
     name: 'Windows',
     icon: AppWindow,
-    filename: 'AndiumClient-Setup.exe',
+    filename: 'Andium.Client.Setup.1.1.30.exe',
     size: '144 MB',
     arch: 'x64 · Windows 10+',
     href: WIN_INSTALLER,
