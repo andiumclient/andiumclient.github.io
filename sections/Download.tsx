@@ -13,32 +13,41 @@ type Platform = {
   size: string;
   arch: string;
   href: string;
+  available: boolean;
 };
+
+// Windows points at the "latest" GitHub release asset — uploading a new
+// release on GitHub auto-updates this URL with zero code changes.
+const WIN_INSTALLER =
+  'https://github.com/andiumclient/andiumclient.github.io/releases/latest/download/AndiumClient-Setup.exe';
 
 const PLATFORMS: Platform[] = [
   {
     name: 'Windows',
     icon: AppWindow,
-    filename: 'AndiumClient-2.4.0-setup.exe',
-    size: '184 MB',
+    filename: 'AndiumClient-Setup.exe',
+    size: '144 MB',
     arch: 'x64 · Windows 10+',
-    href: '#'
+    href: WIN_INSTALLER,
+    available: true
   },
   {
     name: 'macOS',
     icon: Apple,
-    filename: 'AndiumClient-2.4.0.dmg',
-    size: '178 MB',
+    filename: 'Coming soon',
+    size: '—',
     arch: 'Universal · macOS 12+',
-    href: '#'
+    href: '#',
+    available: false
   },
   {
     name: 'Linux',
     icon: Monitor,
-    filename: 'AndiumClient-2.4.0.AppImage',
-    size: '171 MB',
+    filename: 'Coming soon',
+    size: '—',
     arch: 'x86_64 · glibc 2.31+',
-    href: '#'
+    href: '#',
+    available: false
   }
 ];
 
@@ -131,12 +140,22 @@ function PlatformCard({ p }: { p: Platform }) {
         </span>
       </div>
 
-      <Button asChild className="w-full">
-        <a href={p.href}>
-          <DownloadIcon className="h-4 w-4" aria-hidden />
-          Download for {p.name}
-        </a>
-      </Button>
+      {p.available ? (
+        <Button asChild className="w-full">
+          <a href={p.href} download>
+            <DownloadIcon className="h-4 w-4" aria-hidden />
+            Download for {p.name}
+          </a>
+        </Button>
+      ) : (
+        <Button
+          variant="secondary"
+          className="w-full cursor-not-allowed opacity-60"
+          disabled
+        >
+          Coming soon
+        </Button>
+      )}
     </motion.li>
   );
 }

@@ -164,7 +164,7 @@ export default function Hero() {
           <Button size="lg" asChild>
             <a href="#download">
               <Download className="h-5 w-5" aria-hidden />
-              Download free
+              Get Andium
             </a>
           </Button>
           <Button size="lg" variant="outline" asChild>
