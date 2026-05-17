@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download, Sparkles } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import OnlineCounter from '@/components/OnlineCounter';
 import { EASE } from '@/lib/utils';
 
 // Deterministic pseudo-random so SSR markup matches CSR markup.
@@ -134,6 +135,8 @@ export default function Hero() {
             <span className="text-fg">Smart FPS Boost</span>
           </span>
         </motion.div>
+
+        <OnlineCounter className="mb-6" />
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
