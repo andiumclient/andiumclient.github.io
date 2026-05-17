@@ -5,6 +5,8 @@ import { Github, MessageCircle, Twitter, Youtube, Zap } from 'lucide-react';
 
 import { EASE } from '@/lib/utils';
 
+const DISCORD_URL = 'https://discord.gg/XwyqZjREjc';
+
 const LINKS = [
   {
     title: 'Product',
@@ -18,8 +20,8 @@ const LINKS = [
   {
     title: 'Community',
     items: [
-      { label: 'Discord', href: '#' },
-      { label: 'GitHub', href: '#' },
+      { label: 'Discord', href: DISCORD_URL },
+      { label: 'GitHub', href: 'https://github.com/andiumclient' },
       { label: 'Bug tracker', href: '#' },
       { label: 'Translators', href: '#' }
     ]
@@ -36,8 +38,8 @@ const LINKS = [
 ];
 
 const SOCIAL = [
-  { label: 'Discord', icon: MessageCircle, href: '#' },
-  { label: 'GitHub', icon: Github, href: '#' },
+  { label: 'Discord', icon: MessageCircle, href: DISCORD_URL },
+  { label: 'GitHub', icon: Github, href: 'https://github.com/andiumclient' },
   { label: 'Twitter', icon: Twitter, href: '#' },
   { label: 'YouTube', icon: Youtube, href: '#' }
 ];

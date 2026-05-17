@@ -19,48 +19,51 @@ function Pills({ className }: { className?: string }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 4 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
-      className={cn('flex flex-wrap items-center justify-center gap-2', className)}
+      transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
+      className={cn('inline-flex items-center gap-1.5', className)}
+      aria-label="Live presence"
     >
-      <Pill icon={Globe} label="online" count={web} />
-      <Pill icon={Gamepad2} label="in-game" count={app} />
+      <Pill icon={Globe} title="Online on the site" count={web} />
+      <Pill icon={Gamepad2} title="In-game right now" count={app} />
     </motion.div>
   );
 }
 
 function Pill({
   icon: Icon,
-  label,
+  title,
   count
 }: {
   icon: typeof Globe;
-  label: string;
+  title: string;
   count: number | null;
 }) {
   return (
-    <div className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs">
-      <span className="relative flex h-2 w-2">
+    <div
+      title={title}
+      className="glass inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px]"
+    >
+      <span className="relative flex h-1.5 w-1.5">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
       </span>
-      <Icon className="h-3.5 w-3.5 text-fg-muted" aria-hidden />
+      <Icon className="h-3 w-3 text-fg-muted" aria-hidden />
       <span className="font-mono tabular-nums text-fg">
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.span
             key={count ?? 'loading'}
-            initial={{ y: -8, opacity: 0 }}
+            initial={{ y: -6, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 8, opacity: 0 }}
-            transition={{ duration: 0.25, ease: EASE }}
+            exit={{ y: 6, opacity: 0 }}
+            transition={{ duration: 0.22, ease: EASE }}
             className="inline-block"
           >
             {count === null ? '—' : count.toLocaleString('en-US')}
           </motion.span>
         </AnimatePresence>
       </span>
-      <span className="text-fg-muted">{label}</span>
     </div>
   );
 }
